@@ -32,6 +32,9 @@ jobs:
       run: |
         pip install -U shreddit
         
+    - name: Generate config files
+      run: |
+        shreddit -g
         
     - name: Shreddit Credentials and config
       run: |
