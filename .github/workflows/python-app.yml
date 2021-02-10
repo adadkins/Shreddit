@@ -35,11 +35,15 @@ jobs:
     - name: Generate config files
       run: |
         shreddit -g
+    
+    - name: See files
+      run: |
+        ls
         
     - name: Shreddit Credentials and config
       run: |
-          echo "${{secrets.REDDIT_CREDENTIALS_FILE}}" > ~/praw.ini
-          echo "${{secrets.SHREDDIT_YAML}}" > ~/shreddit.yml
+          echo "${{secrets.REDDIT_CREDENTIALS_FILE}}" > praw.ini
+          echo "${{secrets.SHREDDIT_YAML}}" > shreddit.yml
           
 
    
