@@ -169,6 +169,7 @@ class Shredder(object):
             else:
                 count_removed += 1
                 self._remove(item)
+                time.sleep(3)
         return count_removed
 
     def _build_iterator(self):
