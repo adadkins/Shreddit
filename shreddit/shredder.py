@@ -126,6 +126,7 @@ class Shredder(object):
         self._logger.debug("Editing and deleting {msg}".format(msg=msg))
         if not self._trial_run:
             comment.edit(replacement_text)
+            time.sleep(3)
 
     def _remove(self, item):
         if self._keep_a_copy and self._save_directory:
