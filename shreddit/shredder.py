@@ -125,8 +125,18 @@ class Shredder(object):
 
         self._logger.debug("Editing and deleting {msg}".format(msg=msg))
         if not self._trial_run:
-            comment.edit(replacement_text)
-            time.sleep(3)
+            looper = True
+            counter = 0
+            while looper and counter <5:
+                try:
+                    comment.edit(replacement_text)
+                    looper=False
+                except:
+                    time.sleep(30)
+                    counter = counter +1
+
+
+                
 
     def _remove(self, item):
         if self._keep_a_copy and self._save_directory:
@@ -142,7 +152,15 @@ class Shredder(object):
         elif isinstance(item, Comment):
             self._remove_comment(item)
         if not self._trial_run:
-            item.delete()
+            looper = True
+            counter =0
+            while looper and counter < 5:
+                try:
+                    item.delete()
+                    looper=False
+                except:
+                    time.sleep(30)
+                    counter =counter +1 
 
     def _remove_things(self, items):
         self._logger.info("Loading items to delete...")
